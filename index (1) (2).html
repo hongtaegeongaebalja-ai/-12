@@ -1,198 +1,290 @@
+# 개발자 정보 사이트 HTML 코드
+
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>타이머 - 공부 집중 & 레벨업 앱</title>
-
-<!-- 📌 SEO 설명 -->
-<meta name="description" content="공부 타이머 앱 - 집중 시간 관리, 포모도로 학습법, 레벨 시스템, 공부 팁 제공으로 학습 효율을 높여주는 웹 앱입니다.">
-
-<meta name="keywords" content="공부 타이머, 집중 타이머, 포모도로, 공부 앱, 시간 관리, 학습 도구">
-<meta name="author" content="타이머 앱">
-
-<!-- 📌 Open Graph (공유 미리보기) -->
-<meta property="og:title" content="📚 타이머 - 공부 집중 앱">
-<meta property="og:description" content="공부 시간 관리 + 레벨 시스템 + 공부 팁 제공 앱">
-<meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개발자 정보 사이트</title>
 
 <style>
-body{
+*{
   margin:0;
-  font-family:sans-serif;
-  background:#f5f6fa;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#0f172a;
+  color:white;
+}
+
+header{
+  width:100%;
+  padding:20px;
+  background:#111827;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+  color:#38bdf8;
+}
+
+nav{
+  display:flex;
+  gap:20px;
+}
+
+nav a{
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#38bdf8;
+}
+
+.hero{
+  width:100%;
+  min-height:70vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  height:100vh;
-}
-
-.box{
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  width:360px;
+  flex-direction:column;
   text-align:center;
-  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+  padding:30px;
 }
 
-h1{
-  margin-bottom:10px;
-}
-
-#timer{
+.hero h1{
   font-size:55px;
-  margin:15px 0;
-  font-weight:bold;
+  margin-bottom:20px;
 }
 
-input{
-  width:80%;
-  padding:10px;
-  border-radius:10px;
-  border:1px solid #ddd;
+.hero p{
+  max-width:700px;
+  font-size:20px;
+  color:#cbd5e1;
+  line-height:1.6;
+}
+
+.hero button{
+  margin-top:30px;
+  padding:15px 30px;
+  border:none;
+  border-radius:12px;
+  background:#38bdf8;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.hero button:hover{
+  transform:scale(1.05);
+}
+
+.section-title{
   text-align:center;
+  font-size:40px;
+  margin-top:50px;
+}
+
+.cards{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  padding:50px;
+}
+
+.card{
+  background:#1e293b;
+  padding:30px;
+  border-radius:20px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+.card h2{
+  margin-bottom:15px;
+  color:#38bdf8;
+}
+
+.card p{
+  color:#cbd5e1;
+  line-height:1.7;
+}
+
+.article{
+  width:100%;
+  padding:50px;
+}
+
+.article-box{
+  background:#1e293b;
+  padding:30px;
+  border-radius:20px;
+  margin-bottom:30px;
+}
+
+.article-box h3{
+  margin-bottom:15px;
+  color:#38bdf8;
+}
+
+.article-box p{
+  color:#cbd5e1;
+  line-height:1.8;
+}
+
+footer{
+  margin-top:50px;
+  padding:30px;
+  text-align:center;
+  background:#111827;
+  color:#94a3b8;
+}
+
+/* 태블릿 반응형 */
+@media(max-width:900px){
+
+.hero h1{
+  font-size:40px;
+}
+
+.cards{
+  grid-template-columns:repeat(2,1fr);
+  padding:30px;
+}
+
+}
+
+/* 핸드폰 반응형 */
+@media(max-width:600px){
+
+header{
+  flex-direction:column;
+  gap:15px;
+}
+
+nav{
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.hero h1{
+  font-size:32px;
+}
+
+.hero p{
   font-size:16px;
 }
 
-button{
-  margin:5px;
-  padding:10px 15px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
+.cards{
+  grid-template-columns:1fr;
+  padding:20px;
 }
 
-.start{background:#4caf50;color:white;}
-.stop{background:#f44336;color:white;}
-.reset{background:#2196f3;color:white;}
-
-.level{
-  margin-top:10px;
-  font-size:14px;
-  color:#444;
+.section-title{
+  font-size:30px;
 }
 
-.tip{
-  margin-top:15px;
-  font-size:13px;
-  color:#666;
-  line-height:1.4;
-  background:#f0f0f0;
-  padding:10px;
-  border-radius:10px;
+.article{
+  padding:20px;
 }
 
-/* 📱 반응형 */
-@media (max-width:600px){
-  .box{width:90%;}
-  #timer{font-size:40px;}
 }
+
 </style>
 </head>
-
 <body>
 
-<div class="box">
+<header>
+  <div class="logo">DevInfo</div>
 
-<h1>⏱ 타이머</h1>
+  <nav>
+    <a href="#">홈</a>
+    <a href="#">개발자 종류</a>
+    <a href="#">개발 공부</a>
+    <a href="#">AI 개발</a>
+  </nav>
+</header>
 
-<input type="number" id="minutes" placeholder="분 입력">
+<section class="hero">
+  <h1>개발자들은 무슨 일을 할까?</h1>
 
-<div id="timer">00:00</div>
+  <p>
+    프론트엔드, 백엔드, 앱 개발자, AI 개발자까지.
+    개발자들의 실제 업무와 공부 방법을 쉽게 알려주는 사이트입니다.
+  </p>
 
-<button class="start" onclick="startTimer()">시작</button>
-<button class="stop" onclick="stopTimer()">정지</button>
-<button class="reset" onclick="resetTimer()">리셋</button>
+  <button>개발자 정보 보기</button>
+</section>
 
-<div class="level">
-⭐ 레벨: <span id="level">1</span> |
-XP: <span id="xp">0</span>
-</div>
+<h1 class="section-title">개발자 종류</h1>
 
-<div class="tip">
-📚 공부 팁<br><br>
-- 하루 30분 꾸준함이 성적을 바꾼다<br>
-- 이해 + 반복이 가장 중요하다<br>
-- 25분 집중 + 5분 휴식 (포모도로)<br>
-- 시험 전에는 문제풀이 중심으로 공부<br>
-- 꾸준함이 합격을 만든다 💪
-</div>
+<section class="cards">
 
-<!-- 📌 연락 정보 (신뢰도용) -->
-<div style="margin-top:10px;font-size:11px;color:#888;">
-문의: hongtaegeongaebalja@gmail.com
-</div>
+  <div class="card">
+    <h2>프론트엔드 개발자</h2>
+    <p>
+      홈페이지 화면 디자인과 버튼, 반응형 UI 등을 만드는 개발자입니다.
+    </p>
+  </div>
 
-</div>
+  <div class="card">
+    <h2>백엔드 개발자</h2>
+    <p>
+      로그인, 데이터 저장, 서버 관리 같은 기능을 만드는 개발자입니다.
+    </p>
+  </div>
 
-<script>
+  <div class="card">
+    <h2>앱 개발자</h2>
+    <p>
+      안드로이드와 아이폰 앱을 제작하는 개발자입니다.
+    </p>
+  </div>
 
-let time = 0;
-let timer;
-let running = false;
+</section>
 
-let xp = 0;
-let level = 1;
+<section class="article">
 
-function updateDisplay(){
-  let min = Math.floor(time/60);
-  let sec = time%60;
+  <div class="article-box">
+    <h3>개발자는 어떻게 돈을 벌까?</h3>
 
-  document.getElementById("timer").innerText =
-    String(min).padStart(2,'0') + ":" +
-    String(sec).padStart(2,'0');
-}
+    <p>
+      앱 제작, 웹사이트 운영, 광고 수익, 외주 개발, AI 서비스 제작 등으로 수익을 만들 수 있습니다.
+    </p>
+  </div>
 
-function startTimer(){
-  if(running) return;
+  <div class="article-box">
+    <h3>학생도 개발자가 될 수 있을까?</h3>
 
-  if(time<=0){
-    let m = document.getElementById("minutes").value;
-    if(!m) return alert("시간 입력");
-    time = m*60;
-  }
+    <p>
+      HTML, CSS, JavaScript부터 시작하면 학생도 충분히 웹사이트와 앱을 만들 수 있습니다.
+    </p>
+  </div>
 
-  running = true;
+</section>
 
-  timer = setInterval(()=>{
-    if(time>0){
-      time--;
-      updateDisplay();
-    }else{
-      clearInterval(timer);
-      running=false;
-
-      xp += 10;
-
-      if(xp >= level*50){
-        level++;
-        xp = 0;
-        alert("레벨 업! 🎉");
-      }
-
-      document.getElementById("xp").innerText = xp;
-      document.getElementById("level").innerText = level;
-
-      alert("공부 끝!");
-    }
-  },1000);
-}
-
-function stopTimer(){
-  clearInterval(timer);
-  running=false;
-}
-
-function resetTimer(){
-  clearInterval(timer);
-  running=false;
-  time=0;
-  updateDisplay();
-}
-
-</script>
+<footer>
+  © 2026 DevInfo - 개발자 정보 사이트
+</footer>
 
 </body>
 </html>
+
